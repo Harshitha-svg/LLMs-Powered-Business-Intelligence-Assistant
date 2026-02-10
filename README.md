@@ -1,4 +1,4 @@
-# SmartBI - LLM-Powered Business Intelligence Assistant
+# LLM's-Powered Business Intelligence Assistant
 
 **SmartBI** helps you upload business data, preview it, generate automatic insights, ask natural language questions, and export reports.
 
@@ -13,3 +13,4 @@
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+
