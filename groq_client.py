@@ -1,15 +1,21 @@
 import os
 import pandas as pd
 import requests
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# Use Streamlit Cloud Secrets when deployed,
+# otherwise fall back to local .env
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))
+
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
 
 if not GROQ_API_KEY:
-    raise ValueError("GROQ_API_KEY not found. Please set it in your .env file.")
+    raise ValueError(
+        "GROQ_API_KEY not found. Add it to Streamlit Cloud Secrets."
+    )
 
 def query_groq(prompt, df=None):
     """
